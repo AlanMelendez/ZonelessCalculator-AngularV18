@@ -3,8 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/calculator',
-    loadComponent: () => import('./calculator/components/calculator-view/calculator-view.component')
+    loadComponent: () => import('@/calculator/pages/calculator-view/calculator-view.component'),
   },
+  {
+    path:'**',
+    redirectTo: '/calculator',
+  }
 ];
 

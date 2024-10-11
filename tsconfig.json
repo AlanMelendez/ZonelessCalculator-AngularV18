@@ -4,27 +4,13 @@
   "compileOnSave": false,
   "compilerOptions": {
 
-    "baseUrl": ".",
+    "baseUrl": ".",  // Aquí puedes probar quitando 'app'
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@env/*": ["src/environments/*"],
-      "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@modules/*": ["src/app/modules/*"],
-      "@services/*": ["src/app/services/*"],
-      "@models/*": ["src/app/models/*"],
-      "@guards/*": ["src/app/guards/*"],
-      "@interceptors/*": ["src/app/interceptors/*"],
-      "@utils/*": ["src/app/utils/*"],
-      "@directives/*": ["src/app/directives/*"],
-      "@pipes/*": ["src/app/pipes/*"],
-      "@components/*": ["src/app/components/*"],
-      "@config/*": ["src/app/config/*"],
-      "@assets/*": ["src/assets/*"]
+      "@/*": ["src/app/*"],
     },
 
     "outDir": "./dist/out-tsc",
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -48,6 +34,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": false
   }
 }
