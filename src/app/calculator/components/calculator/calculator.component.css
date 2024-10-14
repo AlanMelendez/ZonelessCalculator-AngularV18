@@ -1,3 +1,6 @@
 :host {
   display: block;
 }
+.isCommand{
+  @apply bg-indigo-700 bg-opacity-20 text-white text-opacity-100 !important;
+}

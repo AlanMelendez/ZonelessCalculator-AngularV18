@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, input, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, input, ViewEncapsulation, type OnInit } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -9,8 +9,9 @@ import { ChangeDetectionStrategy, Component, HostBinding, input, type OnInit } f
   styleUrl: './calculator-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'w-1/4 border-r border-b border-indigo-400'
-  }
+    class: 'w-1/4 border-r border-b border-indigo-400',
+  },
+  // encapsulation: ViewEncapsulation.None,
 })
 export class CalculatorButtonComponent implements OnInit {
   public isCommand = input(
