@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, input, type OnInit } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -20,6 +20,10 @@ export class CalculatorButtonComponent implements OnInit {
         typeof value === 'string' ? value === '' : value,
     }
   );
+
+  @HostBinding('class.isCommand') get commandStyle() {
+    return this.isCommand();
+  }
   ngOnInit(): void {
   }
 
