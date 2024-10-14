@@ -22,9 +22,9 @@ export class CalculatorButtonComponent implements OnInit {
     }
   );
 
-  @HostBinding('class.isCommand') get commandStyle() {
-    return this.isCommand();
-  }
+  // @HostBinding('class.isCommand') get commandStyle() {
+  //   return this.isCommand();
+  // }
   ngOnInit(): void {
   }
 
