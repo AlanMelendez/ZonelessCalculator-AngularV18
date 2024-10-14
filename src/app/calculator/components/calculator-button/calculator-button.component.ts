@@ -21,10 +21,17 @@ export class CalculatorButtonComponent implements OnInit {
         typeof value === 'string' ? value === '' : value,
     }
   );
+  public isDoubleSize = input(
+    false,
+    {
+      transform: (value: boolean | string) =>
+        typeof value === 'string' ? value === '' : value,
+    }
+  );
 
-  // @HostBinding('class.isCommand') get commandStyle() {
-  //   return this.isCommand();
-  // }
+  @HostBinding('class.w-2/4') get commandStyle() {
+    return this.isDoubleSize();
+  }
   ngOnInit(): void {
   }
 
