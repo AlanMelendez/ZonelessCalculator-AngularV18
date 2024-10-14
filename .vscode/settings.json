@@ -1,0 +1,10 @@
+{
+    "angular-schematics.schematicsDefaultOptions": {
+        "angular-component": {
+            "ngOnInit": true
+        },
+        "angular-*": {
+            "externalTemplate": true
+        }
+    }
+}
