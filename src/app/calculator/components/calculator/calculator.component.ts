@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, type OnInit } from '@angular/core';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
 
 @Component({
@@ -18,6 +18,12 @@ export class CalculatorComponent implements OnInit {
 
   getClickEvent(event: string) {
     console.log(event);
+  }
+
+
+  @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.getClickEvent(event.key);
   }
 
 }
