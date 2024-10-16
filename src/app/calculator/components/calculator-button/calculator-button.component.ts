@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, input, ViewEncapsulation, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, input, output, viewChild, ViewEncapsulation, type OnInit } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -14,6 +14,9 @@ import { ChangeDetectionStrategy, Component, HostBinding, input, ViewEncapsulati
   // encapsulation: ViewEncapsulation.None,
 })
 export class CalculatorButtonComponent implements OnInit {
+  public onClick = output<string>();
+  public contentValue = viewChild<ElementRef<HTMLButtonElement>>('button');
+
   public isCommand = input(
     false,
     {
@@ -33,6 +36,15 @@ export class CalculatorButtonComponent implements OnInit {
     return this.isDoubleSize();
   }
   ngOnInit(): void {
+  }
+
+  handleClick() {
+    if(!this.contentValue()?.nativeElement) {
+       return;
+    }
+    const value = this.contentValue()!.nativeElement.innerText;
+
+    this.onClick.emit(value.trim());
   }
 
 }

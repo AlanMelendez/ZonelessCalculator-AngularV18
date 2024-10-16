@@ -16,4 +16,8 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  getClickEvent(event: string) {
+    console.log(event);
+  }
+
 }
