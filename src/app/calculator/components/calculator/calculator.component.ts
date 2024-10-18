@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, viewChildren, type OnInit } from '@angular/core';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
 
 @Component({
@@ -17,6 +17,8 @@ import { CalculatorButtonComponent } from '../calculator-button/calculator-butto
 })
 export class CalculatorComponent implements OnInit {
 
+  public calculatorButtons = viewChildren(CalculatorButtonComponent);
+
   ngOnInit(): void { }
 
   getClickEvent(event: string) {
@@ -25,7 +27,24 @@ export class CalculatorComponent implements OnInit {
 
 
   handleKeyboardEvent(event: KeyboardEvent) {
-    this.getClickEvent(event.key);
+
+    const keyEquivalent: Record<string, string> = {
+      Escape: 'C',
+      Clear: 'C',
+      '*': 'x',
+      '/': '÷',
+      Enter: '=',
+      '=': '=',
+    };
+
+    const key = event.key;
+    const keyToUse = keyEquivalent[key] || key;
+
+    this.getClickEvent(keyToUse);
+
+    this.calculatorButtons().forEach((button) => {
+      button.keyPressStyle(keyToUse);
+    });
   }
 
   // @HostListener('document:keyup', ['$event'])
