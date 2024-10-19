@@ -22,8 +22,7 @@ export class CalculatorService {
 
     //Validar caracter "="
     if (value === '=') {
-      //TODO: Calcular resultado
-      console.log('Calculando resultado...');
+      this.calculateResult();
       return;
     }
 
@@ -106,5 +105,32 @@ export class CalculatorService {
       this.resultText.update((lastValue) => lastValue + value);
     }
 
+  }
+
+  public calculateResult(): void {
+    const number1 = parseFloat(this.subResultText());
+    const number2 = parseFloat(this.resultText());
+    const operator = this.lastOperator();
+
+    let result = 0;
+
+    switch (operator) {
+      case '+':
+        result = number1 + number2;
+        break;
+      case '-':
+        result = number1 - number2;
+        break;
+      case '*':
+        result = number1 * number2;
+        break;
+      case '/':
+        result =  number2 / number1;
+        break;
+    }
+
+    this.resultText.set(result.toString());
+    this.subResultText.set('0');
+    this.lastOperator.set('+');
   }
 }

@@ -37,7 +37,7 @@ export class CalculatorComponent implements OnInit {
     const keyEquivalent: Record<string, string> = {
       Escape: 'C',
       Clear: 'C',
-      '*': 'x',
+      'x': '*',
       '/': '÷',
       Enter: '=',
       '=': '=',
