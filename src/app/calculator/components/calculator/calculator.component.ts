@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, viewChildren, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, viewChildren, type OnInit } from '@angular/core';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
+import { CalculatorService } from '@/calculator/services/calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -16,8 +17,13 @@ import { CalculatorButtonComponent } from '../calculator-button/calculator-butto
   },
 })
 export class CalculatorComponent implements OnInit {
-
+  private _calculatorService = inject(CalculatorService);
   public calculatorButtons = viewChildren(CalculatorButtonComponent);
+
+
+  public resultText = computed(() => this._calculatorService.resultText());
+  public subResultText = computed(() => this._calculatorService.subResultText());
+  public lastOperator = computed(() => this._calculatorService.lastOperator());
 
   ngOnInit(): void { }
 
