@@ -36,11 +36,18 @@ export class CalculatorService {
 
     //Validar backspace
     if (value === 'Backspace') {
-      if (this.resultText().length === 1) {
+
+      if (this.resultText() === '0') return;
+
+      if(this.resultText().includes('-') && this.resultText().length === 2) {
         this.resultText.set('0');
         return;
       }
-      if (this.resultText() === '0') return;
+
+      if(this.resultText().length === 1) {
+        this.resultText.set('0');
+        return;
+      }
 
       this.resultText.update((currenValue) => currenValue.slice(0, -1)); //Elimina el último caracter
       return;
@@ -48,6 +55,8 @@ export class CalculatorService {
 
     //Aplicar operador
     if (operators.includes(value)) {
+      this.calculateResult();
+
       this.lastOperator.set(value);
       this.subResultText.set(this.resultText());
       this.resultText.set('0');
