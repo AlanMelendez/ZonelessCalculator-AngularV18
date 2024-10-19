@@ -55,7 +55,7 @@ export class CalculatorService {
 
     //Aplicar operador
     if (operators.includes(value)) {
-      this.calculateResult();
+      // this.calculateResult();
 
       this.lastOperator.set(value);
       this.subResultText.set(this.resultText());
