@@ -28,7 +28,7 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void { }
 
   getClickEvent(event: string) {
-    console.log(event);
+    this._calculatorService.constructNumber(event);
   }
 
 
@@ -44,7 +44,7 @@ export class CalculatorComponent implements OnInit {
     };
 
     const key = event.key;
-    const keyToUse = keyEquivalent[key] || key;
+    const keyToUse = keyEquivalent[key] ?? key;
 
     this.getClickEvent(keyToUse);
 
