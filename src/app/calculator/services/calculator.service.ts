@@ -52,7 +52,6 @@ export class CalculatorService {
       this.resultText.update((currenValue) => currenValue.slice(0, -1)); //Elimina el último caracter
       return;
     }
-
     //Aplicar operador
     if (operators.includes(value)) {
       // this.calculateResult();
