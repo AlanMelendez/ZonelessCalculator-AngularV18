@@ -14,11 +14,25 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // it(`should have the 'zonelessCalculator' title`, () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.componentInstance;
-  //   expect(app.title).toEqual('zonelessCalculator');
-  // });
+  it('should be 2', () => {
+    // Arrange
+    const num1 =1;
+    const num2 =3;
+
+    //Act
+    const result = num1 + num2;
+
+    //Assert
+    expect(result).toBe(3);
+
+
+  });
+
+  it(`should have the 'zonelessCalculator' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('zonelessCalculator');
+  });
 
   // it('should render title', () => {
   //   const fixture = TestBed.createComponent(AppComponent);
