@@ -123,4 +123,44 @@ describe('CalculatorService',()=>{
     expect(service.resultText()).toBe('2.5');
   });
 
+
+
+  it('should handle sign change correctly', ()=>{
+    service.constructNumber('1');
+    service.constructNumber('+/-');
+
+    expect(service.resultText()).toBe('-1');
+    service.constructNumber('+/-');
+    expect(service.resultText()).toBe('1');
+
+  });
+
+  it('should handle backspace correctly', () =>{
+    service.resultText.set('123');
+
+    service.constructNumber('Backspace');
+    expect(service.resultText()).toBe('12');
+
+    service.constructNumber('Backspace')
+    expect(service.resultText()).toBe('1')
+
+    service.constructNumber('Backspace')
+    expect(service.resultText()).toBe('0')
+
+  });
+
+
+  it('should handle max length', ()=>{
+    for (let index = 0; index < 10; index++) {
+      service.constructNumber('1')
+    }
+
+    expect(service.resultText().length).toBe(10);
+
+    //Add one more number to validate not pass length to max 10 characters
+    service.constructNumber('1')
+    expect(service.resultText().length).toBe(10);
+
+  });
+
 });
