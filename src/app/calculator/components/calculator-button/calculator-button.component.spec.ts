@@ -81,7 +81,7 @@ describe('CalculatorButtonComponent', () => {
     expect(component.isPressed()).toBeTrue();
 
     setTimeout(() => {
-      expect(component.isPressed()).toBeTrue();
+      expect(component.isPressed()).toBeFalse();
       done();
     }, 200);
 
