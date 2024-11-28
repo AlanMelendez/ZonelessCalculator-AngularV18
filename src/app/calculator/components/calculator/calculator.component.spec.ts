@@ -17,6 +17,8 @@ describe('CalculatorComponent', () => {
   let compiled: HTMLElement;
   let component: CalculatorComponent;
 
+  let calculationService: calculatorMockService
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CalculatorComponent],
@@ -28,7 +30,10 @@ describe('CalculatorComponent', () => {
     fixture = TestBed.createComponent(CalculatorComponent);
     compiled = fixture.nativeElement as HTMLElement;
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
+    calculationService = TestBed.inject(CalculatorService) as unknown as calculatorMockService;
+
+    // fixture.detectChanges();
   });
 
   it('should create the app', () => {
@@ -40,5 +45,25 @@ describe('CalculatorComponent', () => {
     expect(component.resultText()).toBe('100.00');
     expect(component.subResultText()).toBe('0');
     expect(component.lastOperator()).toBe('+');
+  });
+
+  it('should display proper calculation values', () => {
+
+    calculationService.resultText.and.returnValue('500');
+    calculationService.subResultText.and.returnValue('100');
+    calculationService.lastOperator.and.returnValue('-');
+
+    fixture.detectChanges();
+    
+    //Evaluate values for the service (mocked)
+    expect(component.resultText()).toBe('500');
+    expect(component.subResultText()).toBe('100');
+    expect(component.lastOperator()).toBe('-');
+
+    //Evaluate values for the component
+    // console.log('component', expect(compiled.querySelector('span')));
+    expect(compiled.querySelector('span')?.textContent).toBe('100 -');
+
+
   });
 });
