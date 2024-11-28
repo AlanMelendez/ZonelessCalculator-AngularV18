@@ -87,5 +87,16 @@ describe('CalculatorButtonComponent', () => {
 
   });
 
+  it('should not set isPressed to true if key is not matching', ()=>{
+    component.contentValue().nativeElement.innerText = '1';
+    component.keyPressStyle('2');
+
+    expect(component.isPressed()).toBeFalse();
+
+
+   
+
+  });
+
 
 });

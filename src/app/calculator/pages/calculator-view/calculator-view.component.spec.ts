@@ -36,6 +36,7 @@ describe('CalulatorViewComponent', () => {
     const shouldHaveClass = 'w-full mx-auto rounded-xl bg-gray-100 shadow-xl text-gray-800 relative overflow-hidden'.split(' ');
 
     shouldHaveClass.forEach((className:any)=>{
+      //Compare each class for div element with the "shouldHaveClass" array
       expect(divClasses).toContain(className);
     });
   });
