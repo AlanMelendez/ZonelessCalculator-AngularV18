@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   imports: [CalculatorButtonComponent],
   template: `
     <calculator-button>
-      <span class="class-text-projectsed">Test content WOOOOAH</span>
+      <span class="class-text-projected">Test content WOOOOAH</span>
     </calculator-button>
   `
 

@@ -60,7 +60,7 @@ describe('AppComponent', () => {
     const cssClasses = 'min-w-screen min-h-screen bg-gray-100 flex items-center justify-center px-5 py-5'.split(' ')
     const divClasses = divElement.classList.value.split(' ');
 
-    console.log('Clases to expect: ',cssClasses)
+    // console.log('Clases to expect: ',cssClasses)
 
     //Evaluate the div element not be null.
     expect(divElement).not.toBeNull();

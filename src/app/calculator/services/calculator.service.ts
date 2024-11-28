@@ -64,7 +64,7 @@ export class CalculatorService {
 
     //Limitar cantidad de caracteres
     if (this.resultText().length >= 10) {
-      console.log('Ops! Max length reached');
+      // console.log('Ops! Max length reached');
       return;
     }
 
