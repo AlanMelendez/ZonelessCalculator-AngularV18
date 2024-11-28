@@ -1,6 +1,22 @@
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalculatorButtonComponent } from './calculator-button.component';
+import { Component } from '@angular/core';
+
+
+@Component({
+  standalone:true,
+  imports: [CalculatorButtonComponent],
+  template: `
+    <calculator-button>
+      <span class="class-text-projectsed">Test content WOOOOAH</span>
+    </calculator-button>
+  `
+
+})
+class TestHostComponente{}
+
+
 
 describe('CalculatorButtonComponent', () => {
 
@@ -69,11 +85,11 @@ describe('CalculatorButtonComponent', () => {
 
   it('should set isPressed to true when keyPressStyle function is called with a matching key', (done)=>{
 
-    console.log(compiled); //to see the component structure and check value to content
+    // console.log(compiled); //to see the component structure and check value to content
     //simulate keyPressStyle some key.
     component.contentValue().nativeElement.innerText = '1';
 
-    console.log(compiled); //to see again the componente value if is changed to '1'
+    // console.log(compiled); //to see again the componente value if is changed to '1'
 
 
     component.keyPressStyle('1');
@@ -93,10 +109,18 @@ describe('CalculatorButtonComponent', () => {
 
     expect(component.isPressed()).toBeFalse();
 
-
-   
-
   });
+
+
+  it('should display projected content', ()=>{
+
+    const testHostFixture = TestBed.createComponent(TestHostComponente);
+    const compiled = testHostFixture.nativeElement as HTMLDivElement;
+
+    expect(compiled.querySelector('span')?.textContent).toBe('Test content WOOOOAH');
+    expect(compiled.querySelector('.class-text-projected')).not.toBeNull();
+
+  })
 
 
 });
